@@ -1,0 +1,14 @@
+:host {
+  position: absolute;
+  bottom: 0;
+  z-index: 30;
+}
+
+.container {
+  padding: 16px;
+  width: 300px;
+  background: var(--menu-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: 4px;
+  box-sizing: border-box; // Makes padding as part of the element width.
+}

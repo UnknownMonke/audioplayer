@@ -1,0 +1,1 @@
+<m-card *ngIf="(state$ | async) as state" [options]="mapOptions(title, state)" (click)="playTitle(title, state)"></m-card>

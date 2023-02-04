@@ -1,0 +1,31 @@
+<div class="player cflex center">
+
+  <div class="title-container">
+    <m-song-title [disableClick]="true"></m-song-title>
+  </div>
+
+  <div class="container lflex j-center w-100">
+
+    <div class="stamp flex a-center">
+      <m-time-display [stampType]="'currentTime'"></m-time-display>
+    </div>
+
+    <m-time-slider></m-time-slider>
+
+    <div class="stamp flex a-center">
+      <m-time-display [stampType]="'totalTime'"></m-time-display>
+    </div>
+  </div>
+
+  <div class="controls flex a-center">
+
+    <m-loop-control></m-loop-control>
+
+    <m-prevnext-control [direction]="-1"></m-prevnext-control>
+    <m-play-control></m-play-control>
+    <m-prevnext-control [direction]="1"></m-prevnext-control>
+
+    <m-volume-control></m-volume-control>
+  </div>
+
+</div>

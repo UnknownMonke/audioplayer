@@ -1,0 +1,65 @@
+:host {
+  // When the component is alone inside the content, centers it at the center of the screen.
+  &.absolute {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.small {
+    transform: scale(0.5);
+  }
+
+  &.isPlaying {
+    height: calc(100% - var(--footerHeight));
+  }
+}
+
+.container{
+  --waveSize: 8px;
+  --gap: 4px;
+
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  width: calc((var(--waveSize) + var(--gap)) * 5);
+
+  .wave {
+    transform: scaleY(.4);
+    height: 100%;
+    width: var(--waveSize);
+    background: var(--loader-bg);
+    border-radius: 8px;
+    animation: 1.2s ease-in-out infinite;
+  }
+
+  .wave1 { animation-name: small; }
+  .wave2 { animation-name: normal; }
+  .wave3 { animation-name: small; }
+  .wave4 { animation-name: large; }
+  .wave5 { animation-name: small; }
+}
+
+@keyframes small {
+
+  25%{ transform: scaleY(.6); }
+  50%{ transform: scaleY(.4); }
+  75%{ transform: scaleY(.8); }
+}
+
+@keyframes normal {
+
+  25%{ transform: scaleY(1); }
+  50%{ transform: scaleY(.4); }
+  75%{ transform: scaleY(.6); }
+}
+
+@keyframes large {
+
+  25%{ transform: scaleY(1); }
+  50%{ transform: scaleY(.4); }
+  75%{ transform: scaleY(1.2); }
+}

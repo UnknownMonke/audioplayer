@@ -1,0 +1,35 @@
+:host {
+  position: absolute;
+  z-index: 100;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 300px;
+  background: var(--menu-bg);
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+}
+
+.header {
+  padding: 24px;
+  border-bottom: 1px solid var(--menu-hr);
+  box-sizing: border-box;
+
+  span.title {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .close {
+    margin-left: auto;
+    cursor: pointer;
+
+    mat-icon {
+      color: var(--default-text-color);
+    }
+  }
+}
+
+.content {
+  padding: 8px 24px 12px 24px;
+}

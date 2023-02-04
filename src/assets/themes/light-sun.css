@@ -1,0 +1,32 @@
+html[data-theme="light-sun"] {
+  --box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px, rgba(0, 0, 0, 0.12) 0px 1px 18px;
+
+  --default-text-color: #3b3b3b;
+
+  --scrollbar-color: #8c8c8c;
+  --scrollbar-bg: #d2d2d2;
+
+  --page-bg: linear-gradient(145deg, rgba(254,205,98,1) 0%, rgba(255,210,108,1) 22%, rgba(255,188,157,1) 49%, rgba(255,227,227,1) 77%, rgba(255,147,216,1) 100%);
+
+  --menu-bg: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,235,235,1) 100%);
+  --menu-hover: rgba(232,232,232,0.4);
+  --menu-hr: #a7a7a7;
+
+  --home-btn-border: #febcf7;
+  --home-btn-bg: linear-gradient(45deg, rgba(249,185,100,1) 0%, rgba(201,0,165,1) 100%);
+
+  --card-bg: linear-gradient(270deg, rgba(250,254,255,1) 0%, rgba(255,228,163,1) 17%, rgba(255,255,255,1) 57%, rgba(255,255,255,1) 100%);
+  --card-bg-active: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(250,223,196,1) 9%, rgba(255,159,63,1) 21%, rgba(255,166,78,1) 28%, rgba(255,255,255,1) 88%);
+  --card-border: transparent;
+  --card-subtitle: #797979;
+
+  --loader-bg: #12E2DC;
+
+  --playing-anim-bg: linear-gradient(0deg, rgba(192,64,246,1) 0%, rgba(240,154,61,1) 100%);
+
+  --player-bg: linear-gradient(0deg, rgba(131,58,180,1) 0%, rgba(172,29,146,1) 100%);
+  --player-text-color: #ffffff;
+
+  --player-btn-bg: rgba(255,255,255,0.18);
+  --player-btn-bg-active: rgba(255, 255, 255, 0.45);
+}

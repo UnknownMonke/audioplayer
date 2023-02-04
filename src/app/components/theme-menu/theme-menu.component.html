@@ -1,0 +1,5 @@
+<m-modal *ngIf="(display$ | async)" [title]="'Change Theme'" (onClose)="close()">
+  <ng-container content>
+    <m-theme *ngFor="let theme of themes" [theme]="theme"></m-theme>
+  </ng-container>
+</m-modal>

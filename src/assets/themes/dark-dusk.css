@@ -1,0 +1,32 @@
+html[data-theme="dark-dusk"] {
+  --box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px, rgba(0, 0, 0, 0.12) 0px 1px 18px;
+
+  --default-text-color: #ffffff;
+
+  --scrollbar-color: #ffffff;
+  --scrollbar-bg: #000000;
+
+  --page-bg: linear-gradient(180deg, rgba(14,4,19,1) 0%, rgba(44,0,79,1) 58%, rgba(44,0,110,1) 77%, rgba(84,0,54,1) 100%);
+
+  --menu-bg: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,54,1) 100%);
+  --menu-hover: rgba(232,232,232,0.4);
+  --menu-hr: #a7a7a7;
+
+  --home-btn-border: #d8caff;
+  --home-btn-bg: linear-gradient(45deg, rgba(149,44,42,1) 0%, rgba(109,27,112,1) 64%, rgba(65,14,88,1) 100%);
+
+  --card-bg: #011627;
+  --card-bg-active: linear-gradient(270deg, rgba(3,33,77,1) 0%, rgba(72,1,99,1) 25%, rgba(3,33,77,1) 60%);
+  --card-border: #222747;
+  --card-subtitle: white;
+
+  --loader-bg: #12E2DC;
+
+  --playing-anim-bg: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(168,0,111,1) 100%);
+
+  --player-bg: linear-gradient(0deg, rgba(48,48,48,1) 0%, rgba(41,0,64,1) 16%, rgba(49,0,69,1) 45%, rgba(69,5,94,1) 68%, rgba(103,11,128,1) 100%);
+  --player-text-color: #ffffff;
+
+  --player-btn-bg: rgba(255,255,255,0.18);
+  --player-btn-bg-active: rgba(255, 255, 255, 0.45);
+}

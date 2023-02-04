@@ -1,0 +1,11 @@
+:host {
+  margin-left: auto;
+  padding-left: 16px;
+
+  mat-icon {
+    font-size: 2rem;
+    width: auto;
+    height: auto;
+    color: var(--default-text-color);
+  }
+}

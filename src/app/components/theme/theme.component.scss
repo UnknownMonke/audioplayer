@@ -1,0 +1,14 @@
+.option {
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover, &:active {
+    background-color: var(--menu-hover);
+  }
+}
+
+span {
+  font-size: 1rem;
+  color: var(--default-text-color);
+}

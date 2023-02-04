@@ -1,0 +1,9 @@
+.time {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-size: 1rem;
+    color: var(--player-text-color);
+  }
+}

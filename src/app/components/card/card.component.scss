@@ -1,0 +1,65 @@
+.card {
+  border-radius: 4px;
+  background: var(--card-bg);
+  box-shadow: var(--box-shadow);
+  transition: transform .2s;
+  min-height: 32px;
+  border: 2px solid var(--card-border);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.isPlaying {
+    background: var(--card-bg-active);
+  }
+
+  &.disabled {
+    cursor: auto;
+  }
+
+  .text {
+
+    .title {
+
+      span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    .subTitle {
+
+      span {
+        font-size: 0.825rem;
+        color: var(--card-subtitle);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+
+  .card {
+    width: 70vw;
+    padding: 16px;
+
+    .title span {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+
+  .card {
+    min-width: 30vw;
+    max-width: 60vw;
+    padding: 14px;
+
+    .title span {
+      font-size: 1.3rem;
+    }
+  }
+}

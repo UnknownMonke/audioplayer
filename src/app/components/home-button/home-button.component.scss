@@ -1,0 +1,66 @@
+$button-width: 120px;
+$button-height: 120px;
+
+:host {
+  display: block;
+  position: relative;
+  width: $button-width;
+  height: $button-height;
+
+  button.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    padding: 0;
+    width: calc($button-width + 2px); // Hides border overlapping.
+    height: calc($button-height + 2px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--box-shadow);
+    border: 6px solid var(--home-btn-border);
+    cursor: pointer;
+
+    animation: expand 2.5s linear 0.1s infinite;
+
+    &:hover, &:active {
+      animation: none;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    span {
+      margin-bottom: 8px;
+    }
+  }
+
+  .circle {
+    position: absolute;
+    display: block;
+    width: $button-width;
+    height: $button-height;
+    z-index: 1;
+    font-size: 5rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--home-btn-bg);
+  }
+
+  .delay1 { animation: waves 2.5s linear 0.1s infinite; }
+  .delay2 { animation: waves 2.5s linear 0.7s infinite forwards; }
+  .delay3 { animation: waves 2.5s linear 1.3s infinite forwards; }
+  .delay4 { animation: waves 2.5s linear 1.9s infinite forwards; }
+}
+
+@keyframes waves {
+
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes expand {
+
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}

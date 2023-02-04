@@ -1,0 +1,13 @@
+<div class="container" *ngIf="(currentTitle$ | async) as currentTitle">
+
+  <div class="title cflex a-center">
+    <span class="name">{{currentTitle.infos.name}}</span>
+    <span class="artist">{{currentTitle.infos.artist}}</span>
+  </div>
+
+  <div class="animation cflex j-center">
+    <m-playing-animation *ngIf="currentTitle.state.isPlaying"></m-playing-animation>
+  </div>
+</div>
+
+

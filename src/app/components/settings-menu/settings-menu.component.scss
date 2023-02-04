@@ -1,0 +1,19 @@
+.menu {
+  align-items: start;
+
+  .option {
+    padding: 12px;
+    color: var(--default-text-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover, &:active {
+      background-color: var(--menu-hover);
+    }
+
+    span {
+      padding-left: 8px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<ng-container *ngIf="(time$ | async) as time; else default">
+  <div class="time">
+    <span>{{time | time}}</span>
+  </div>
+</ng-container>
+
+<ng-template #default>
+  <div class="time">
+    <span>{{0 | time}}</span>
+  </div>
+</ng-template>
+

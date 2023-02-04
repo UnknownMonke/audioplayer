@@ -1,0 +1,12 @@
+.container {
+  height: 100vh;
+
+  .content {
+    background: var(--page-bg);
+    width: 100%;
+    flex-grow: 1; // Used to force-fill the window with background when the content is not high enough.
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) transparent;
+  }
+}

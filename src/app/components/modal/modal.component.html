@@ -1,0 +1,10 @@
+<div class="header lflex w-100">
+  <span class="title flex center">{{title}}</span>
+  <div class="close flex center" (click)="onClose.emit()">
+    <mat-icon>close</mat-icon>
+  </div>
+</div>
+
+<div class="content">
+  <ng-content select="[content]"></ng-content>
+</div>

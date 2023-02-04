@@ -1,0 +1,16 @@
+<ng-container *ngIf="(displayPlayer$ | async)">
+
+    <div class="bg">
+
+      <ng-container *ngIf="(playerExpanded$ | async); else reduced">
+        <m-player-expanded></m-player-expanded>
+      </ng-container>
+
+      <ng-template #reduced>
+        <m-player-reduced></m-player-reduced>
+      </ng-template>
+
+      <m-audiospectre></m-audiospectre>
+
+    </div>
+</ng-container>

@@ -1,0 +1,19 @@
+.currentTitle {
+  cursor: pointer;
+
+  &.disabled {
+    pointer-events: none;
+    cursor: auto;
+  }
+
+  span {
+    color: var(--player-text-color);
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

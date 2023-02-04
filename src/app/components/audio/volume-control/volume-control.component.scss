@@ -1,0 +1,125 @@
+.container {
+  position: relative;
+  display: inline-flex;
+
+  &:hover .slider-container {
+    max-width: var(--wh);
+  }
+
+  .slider-container {
+    flex-basis: 0px;
+    transition: all .3s ease-in-out;
+    max-width: 0;
+    overflow: hidden;
+    position: absolute;
+    left: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .slider-container {
+    top: -30%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1100px) {
+
+  .slider-container {
+    top: -25%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+
+  .slider-container {
+    top: -18%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  :host {
+    --wh: 128px;
+  }
+
+  .slider-container {
+
+    @keyframes open {
+      from {
+        max-width: 0;
+      }
+      to {
+        max-width: 128px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 700px) {
+
+  :host {
+    --wh: 80px;
+  }
+
+  .slider-container {
+
+    @keyframes open {
+      from {
+        max-width: 0;
+      }
+      to {
+        max-width: 80px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+
+  :host {
+    --wh: 128px;
+  }
+
+  .slider-container {
+
+    @keyframes open {
+      from {
+        max-width: 0;
+      }
+      to {
+        max-width: 128px;
+      }
+    }
+  }
+}
+
+//TODO custom palette.
+// Restyling of material slider.
+:host ::ng-deep {
+
+  .mat-slider {
+    padding: 0;
+    margin: 0 12px;
+  }
+
+  .mat-slider-horizontal {
+    min-width: calc(var(--wh) - 16px);
+
+    .mat-slider-track-background {
+      background-color: var(--player-text-color);
+      opacity: 0.2;
+    }
+
+    .mat-slider-track-fill {
+      background-color: var(--player-text-color);
+    }
+
+    .mat-slider-thumb-container .mat-slider-thumb,
+    .mat-slider-thumb-container .mat-slider-thumb,
+    &:hover .mat-slider-thumb-container .mat-slider-thumb {
+      background-color: var(--player-text-color);
+      border-color: var(--player-text-color);
+    }
+  }
+}

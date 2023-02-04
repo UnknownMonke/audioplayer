@@ -1,0 +1,12 @@
+<div class="card flex center" [ngClass]="{'isPlaying': options.selected, 'disabled': options.disabled ?? false}">
+
+  <div class="lflex w-100">
+
+    <div class="text cflex">
+      <div class="title"><span>{{options.title}}</span></div>
+      <div class="subTitle" *ngIf="options.subTitle"><span>{{options.subTitle}}</span></div>
+    </div>
+
+    <m-card-button *ngIf="options.isPlayable" [icon]="options.isPlaying ? 'pause' : 'play_arrow'"></m-card-button>
+  </div>
+</div>

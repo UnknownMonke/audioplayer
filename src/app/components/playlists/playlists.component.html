@@ -1,0 +1,15 @@
+<m-listview [listTitle]="'Playlists'">
+
+  <ng-container listContent *ngIf="(playlists$ | async) as playlists; else loading">
+
+    <m-card *ngFor="let playlist of playlists; trackBy: trackById" [options]="mapOptions(playlist)" routerLink="/playlist/{{playlist.id}}"></m-card>
+
+    <m-card *ngIf="playlists.length === 0" [options]="emptyCard()"></m-card>
+
+  </ng-container>
+
+  <ng-template #loading>
+    <m-loader></m-loader>
+  </ng-template>
+
+</m-listview>

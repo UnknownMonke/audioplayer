@@ -1,0 +1,17 @@
+<ng-container listContent *ngIf="(playlist$ | async) as playlist; else loading">
+
+  <m-listview [listTitle]="playlist.name">
+    <ng-container listContent>
+
+      <m-title *ngFor="let titleEntry of (playlist.titles | keyvalue)" [title]="titleEntry.value"></m-title>
+
+      <m-card *ngIf="empty(playlist)" [options]="emptyCard()"></m-card>
+
+    </ng-container>
+  </m-listview>
+
+</ng-container>
+
+<ng-template #loading>
+  <m-loader class="absolute" [ngClass]="{'isPlaying': (displayPlayer$ | async)}"></m-loader>
+</ng-template>
