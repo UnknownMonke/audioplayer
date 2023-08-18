@@ -11,7 +11,7 @@ export const AudioCommands = createActionGroup({
     'load': props<{ source: string }>(),
     'play': props<{ play: boolean }>(),
     'stop': emptyProps(),
-    'toggle loop': emptyProps(),
+    'toggleLoop': emptyProps(),
     'timeUpdate': props<{ time: number }>(),
     'volumeChange': props<{ volume: number }>(),
     'reset': emptyProps()
@@ -85,7 +85,7 @@ export const audioCommandReducer = createReducer(
       payload: {}
     }
   }),
-  on(AudioCommands.timeupdate, (_command, { time }) => {
+  on(AudioCommands.timeUpdate, (_command, { time }) => {
     return {
       name: AudioAction.TIMEUPDATE,
       payload: {
@@ -93,7 +93,7 @@ export const audioCommandReducer = createReducer(
       }
     }
   }),
-  on(AudioCommands.volumechange, (_command, { volume }) => {
+  on(AudioCommands.volumeChange, (_command, { volume }) => {
     return {
       name: AudioAction.VOLUMECHANGE,
       payload: {
@@ -125,9 +125,9 @@ export const audioStateReducer = createReducer(
   initialState,
   on(AudioEvents.playing, (state: AudioState, { playing }) => ({ ...state, isPlaying: playing }) ),
   on(AudioEvents.looping, (state: AudioState, { looping }) => ({ ...state, isLooping: looping }) ),
-  on(AudioEvents.loadedmetadata, (state: AudioState, { value, time, volume }) => ({ ...state, loadedMetadata: value, duration: time, volume }) ),
-  on(AudioEvents.timeupdate, (state: AudioState, { time }) => ({ ...state, currentTime: time }) ),
-  on(AudioEvents.volumechange, (state: AudioState, { volume }) => ({ ...state, volume }) ),
+  on(AudioEvents.loadedMetadata, (state: AudioState, { value, time, volume }) => ({ ...state, loadedMetadata: value, duration: time, volume }) ),
+  on(AudioEvents.timeUpdate, (state: AudioState, { time }) => ({ ...state, currentTime: time }) ),
+  on(AudioEvents.volumeChange, (state: AudioState, { volume }) => ({ ...state, volume }) ),
   on(AudioEvents.reset, () => initialState)
 );
 

@@ -117,11 +117,11 @@ export class AudioProvider {
   /** Dispatches the audio event in the state. */
   private _updateState(event: Event, audio: HTMLAudioElement): void {
     switch (event.type) {
-      case AudioEvent.LOADEDMETADATA: return this._store.dispatch( AudioEvents.loadedmetadata({ value: true, time: audio.duration, volume: audio.volume }) );
+      case AudioEvent.LOADEDMETADATA: return this._store.dispatch( AudioEvents.loadedMetadata({ value: true, time: audio.duration, volume: audio.volume }) );
       case AudioEvent.PAUSE: return this._store.dispatch( AudioEvents.playing({ playing: false }) );
       case AudioEvent.PLAYING: return this._store.dispatch( AudioEvents.playing({ playing: true }) );
-      case AudioEvent.TIMEUPDATE: return this._store.dispatch( AudioEvents.timeupdate({ time: audio.currentTime }) );
-      case AudioEvent.VOLUMECHANGE: return this._store.dispatch( AudioEvents.volumechange({ volume: audio.volume }) );
+      case AudioEvent.TIMEUPDATE: return this._store.dispatch( AudioEvents.timeUpdate({ time: audio.currentTime }) );
+      case AudioEvent.VOLUMECHANGE: return this._store.dispatch( AudioEvents.volumeChange({ volume: audio.volume }) );
       case AudioEvent.ENDED: return this._store.dispatch( changeTitle({ direction: 1 }) ); // Plays next title on playback end event.
       default: break;
     }
@@ -169,7 +169,7 @@ export class AudioProvider {
           if(command.payload.data.volume === 0) {
             audio.muted = true;
             // Manually dispatches the volume event as no event is normally dispatched, since the volume did not change.
-            this._store.dispatch( AudioEvents.volumechange({ volume: 0 }) );
+            this._store.dispatch( AudioEvents.volumeChange({ volume: 0 }) );
           } else {
             audio.muted = false;
             audio.volume = command.payload.data.volume;

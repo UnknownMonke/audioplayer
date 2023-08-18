@@ -100,14 +100,14 @@ export class AudioService {
    * @param seconds raw time of the audio element.
    */
   seekTo(seconds: number) {
-    this._store.dispatch(AudioCommands.timeupdate({ time: seconds }));
+    this._store.dispatch(AudioCommands.timeUpdate({ time: seconds }));
   }
 
   /**
    * @param volume between 0 and 1.
    */
   changeVolume(volume: number): void {
-    this._store.dispatch(AudioCommands.volumechange({ volume }));
+    this._store.dispatch(AudioCommands.volumeChange({ volume }));
   }
 
   /* --------------------- */
