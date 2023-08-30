@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType, concatLatestFrom } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { filter, mergeMap, map, tap } from "rxjs";
+import { mergeMap, tap, of } from "rxjs";
 import { n_u_empty_ } from "src/app/helpers";
 import { TitleProvider } from "src/app/providers/title.provider";
 import { Title } from "src/app/types";
-import { AudioCommands } from "../audio/audio.store";
+import { AudioCommands, playPause } from "../audio/audio.store";
 import { DisplaysActions } from "../display/display.store";
 import { loadCurrentPlaylist } from "../playlist/playlist.store";
 import { currentTitle, loadCurrentTitle, setCurrentTitle } from "./title.store";
@@ -35,18 +35,28 @@ export class TitleEffects {
     .pipe(
       ofType(loadCurrentTitle),
       concatLatestFrom( () => this._store.select(currentTitle) ),
-      filter( ([, data]) => n_u_empty_(data) ),
-      tap( () => this._store.dispatch(DisplaysActions.setPlayer( {display: true })) ),
-      mergeMap( ([action,]) =>
-        this._titleProvider.getOne(action.id)
-          .pipe(
-            tap( (title: Title) => {
-              this._store.dispatch(loadCurrentPlaylist({ playlistId: title.playlistId }));
-              this._store.dispatch(setCurrentTitle({ currentTitle: { infos: title, state: { selected: false, isPlaying: false }} }));
-            }),
-            map( (title: Title) => AudioCommands.preload({ source: title.source }) )
-          )
-      )
+      mergeMap( ([action, currentTitle]) => {
+
+        if(!n_u_empty_(currentTitle)) {
+          return of(playPause({ currentTitle }));
+        } else {
+          return this._titleProvider.getOne(action.id)
+            .pipe(
+              mergeMap( (title: Title) =>
+
+                this._titleProvider.getStream(title.playlistName, title.source)
+                  .pipe(
+                    tap( (data: string) => {
+                      this._store.dispatch(loadCurrentPlaylist({ playlistId: title.playlistId }));
+                      this._store.dispatch(DisplaysActions.setPlayer( {display: true }));
+                      this._store.dispatch(AudioCommands.preload({ source: data }));
+                    }),
+                    mergeMap( (data: string) => of(setCurrentTitle({ currentTitle : { infos: title, state: { selected: true, isPlaying: false }, dataUrl: data } }) ))
+                  )
+              )
+            );
+        }
+      })
     )
-  );
+  )
 }

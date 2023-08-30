@@ -23,8 +23,8 @@ with os.scandir(sourceFolder) as entries:
 
           split = title.name.split('-')
 
-          titlesJson += ''.join(['{"id":"', str(titleId), '","playlistId":"', str(playlistId), '","name":"', split[len(split) - 1].replace('.mp3','').strip(),
-          '","artist":"', split[0].strip(), '","source":"', title.name, '"},'])
+          titlesJson += ''.join(['{"id":"', str(titleId), '","playlistId":"', str(playlistId), '","playlistName":"', entry.name, '","name":"',
+          split[len(split) - 1].replace('.mp3','').strip(), '","artist":"', split[0].strip(), '","source":"', title.name, '"},'])
 
           titleId += 1
       playlistId += 1

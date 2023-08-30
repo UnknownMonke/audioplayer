@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { map, Observable } from "rxjs";
 import { n_u_empty_ } from 'src/app/helpers';
 import { CurrentTitle, Title, TitleState } from "src/app/types";
-import { AudioService } from "../../services/audio.service";
 import { TitleService } from "../../services/title.service";
 import { CardModule, CardOptions } from "../card/card.component";
 
@@ -48,7 +47,6 @@ export class TitleComponent {
 
   constructor(
     private _router: Router,
-    private _audioService: AudioService,
     private _titleService: TitleService
   ) {
     // Updates the card title state everytime the current title is updated.
@@ -64,11 +62,15 @@ export class TitleComponent {
       );
   }
 
-  /** Clicks on card. Toggles playback and sets the current title if changed. */
+  /**
+   * Clicks on card.
+   * Does not toggle playback, as it is loaded once inside the titleview component,
+   * simply updates the current title in the store if a different title is selected, then navigates to the title view.
+   * */
   playTitle(title: Title, state: TitleState): void {
 
     if(!state.selected) {
-      this._audioService.playPause(title, state);
+      this._titleService.setCurrentTitle({ infos: title, state });
     }
     this._router.navigateByUrl(`/title/${title.id}`);
   }

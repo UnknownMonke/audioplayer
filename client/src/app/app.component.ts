@@ -5,11 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from '@ngrx/store';
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { AppRoutingModule } from './app-routing.module';
 import { AudioPlayerModule } from './components/audio-player/audioplayer.component';
 import { BackgroundModule } from './components/background/background.component';
-import { InMemoryDataService } from './in-memory-data.service';
 import { AudioEffects } from './store/audio/audio.effect';
 import { audioCommandReducer, audioStateReducer } from './store/audio/audio.store';
 import { DisplayEffects } from './store/display/display.effects';
@@ -24,6 +22,9 @@ import { currentTitleReducer } from './store/title/title.store';
 //TODO tri playlists
 //TODO sliding text title song
 //TODO private mode css ?
+//TODO persistent volume change across the session
+//TODO keep track of scroll pos while going back
+//TODO material icons & fonts offline
 /**
  * Root component of the application.
  *
@@ -100,8 +101,6 @@ export class AppComponent {}
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    // Intercepts HTTP requests and returns simulated server responses.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     EffectsModule.forRoot([
       AudioEffects,
       DisplayEffects,

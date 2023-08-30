@@ -30,6 +30,7 @@ export declare type Playlist = {
 export declare type Title = {
   id: string,
   playlistId: string,
+  playlistName: string,
   name: string,
   artist: string,
   featuring?: string[],
@@ -38,5 +39,6 @@ export declare type Title = {
 
 export declare type CurrentTitle = {
   infos: Title,
-  state: TitleState
+  state: TitleState,
+  dataUrl?: string
 } | Record<PropertyKey, never>;

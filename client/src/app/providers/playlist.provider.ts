@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable, switchMap } from "rxjs";
+import { APIEntry } from "../helpers";
 import { Playlist, Title } from "../types";
 import { TitleProvider } from "./title.provider";
 
@@ -18,13 +19,16 @@ export class PlaylistProvider {
   ) {}
 
   get(): Observable<Playlist[]> {
-    return this._httpClient.get<Playlist[]>('api/playlists');
+    return this._httpClient.get<string>(`${APIEntry.PLAYLIST_ENTRY}/get`)
+      .pipe(
+        map( (data: string) => JSON.parse(data))
+      )
   }
 
   /** Gets a single playlist by id. */
   getOne(id: string): Observable<Playlist> {
 
-    return this._httpClient.get<Playlist[]>('api/playlists')
+    return this.get()
       .pipe(
         map( (data: Playlist[]) => {
           const filteredList = data.filter( (playlist: Playlist) => playlist.id === id);
@@ -32,12 +36,11 @@ export class PlaylistProvider {
           if(filteredList.length > 0) {
             return filteredList[0];
           }
-          throw new Error('Playlist id doesn\'t exists');
+          throw new Error('Playlist id doesn\'t exist');
         })
-      );
+      )
   }
 
-  //TODO change with real server
   /**
    * Loads the current playlist WITH its titles.
    *

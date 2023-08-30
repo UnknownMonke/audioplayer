@@ -36,6 +36,11 @@ export const playPause = createAction(
   props<{ currentTitle: CurrentTitle }>()
 );
 
+export const loadTitle = createAction(
+  '[Audio] load title',
+  props<{ currentTitle: CurrentTitle }>()
+);
+
 export const togglePlay = createAction(
   '[Audio] toggle play'
 );

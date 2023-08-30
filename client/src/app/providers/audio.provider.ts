@@ -75,7 +75,6 @@ export class AudioProvider {
 
     // Creates the HTMLAudioElement.
     const audio = source.mediaElement;
-    audio.preload = 'none'; // Prevents autoloading.
 
     // Plugs the listeners and state.
     Object.values(AudioEvent).forEach((eventName: string) =>

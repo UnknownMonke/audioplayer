@@ -1,5 +1,4 @@
-import { createAction, createFeatureSelector, createReducer, createSelector, on, props } from "@ngrx/store";
-import { n_u_empty_ } from "src/app/helpers";
+import { createAction, createFeatureSelector, createReducer, on, props } from "@ngrx/store";
 import { CurrentTitle } from "src/app/types";
 
 // ----------------------- Actions ----------------------- //
@@ -19,11 +18,6 @@ export const setCurrentTitle = createAction(
 export const loadCurrentTitle = createAction(
   '[Playlist] Load Current Title',
   props<{ id: string }>()
-);
-
-export const updateCurrentTitle = createAction(
-  'update Current Title',
-  props<{ details: CurrentTitle, isPlaying: boolean }>()
 );
 
 // ----------------------- Reducers ---------------------- //
