@@ -1,0 +1,15 @@
+# Stage 0, compile the Angular app in a Node environment.
+FROM node:18.12.1 as build-stage
+WORKDIR /client
+COPY package*.json /client/
+RUN npm install
+COPY ./ /client/
+ARG configuration=production
+RUN npm run build -- --output-path=./dist --configuration $configuration
+
+# Stage 1, move the compiled files into the Nginx server block directory to be served and update the block config.
+FROM nginx:1.18
+#Copy ci-dashboard-dist
+COPY --from=build-stage /client/dist/ /var/www/monkemusic/html
+#Copy default nginx configuration
+COPY ./nginx.conf /etc/nginx/sites-available/monkemusic
