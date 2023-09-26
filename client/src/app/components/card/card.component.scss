@@ -1,10 +1,9 @@
 .card {
-  border-radius: 4px;
-  background: var(--card-bg);
   box-shadow: var(--box-shadow);
+  border-radius: 16px;
+  background: var(--card-bg);
   transition: transform .2s;
   min-height: 32px;
-  border: 2px solid var(--card-border);
   cursor: pointer;
 
   &:hover {

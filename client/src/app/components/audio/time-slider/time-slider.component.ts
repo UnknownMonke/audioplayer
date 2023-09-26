@@ -45,7 +45,7 @@ export class TimeSliderComponent {
   }
 
   mouseup(): void {
-    //Retreives last value emitted.
+    // Retreives last value emitted.
     this._sliderChange$
       .pipe(
         take(1),

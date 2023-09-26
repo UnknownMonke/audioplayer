@@ -1,4 +1,4 @@
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 600px) {
 
   .mat-mdc-slider {
     min-width: 60vw;
@@ -9,7 +9,7 @@
   }
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 600px) {
 
   .mat-mdc-slider {
     min-width: 40vw;
@@ -32,7 +32,7 @@
     }
 
     .mat-slider-track-fill {
-      background-color: var(--player-text-color);
+      background: var(--player-expanded-slider-fill);
     }
 
     .mat-slider-thumb-container .mat-slider-thumb,

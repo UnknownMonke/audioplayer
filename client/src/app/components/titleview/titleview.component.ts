@@ -49,8 +49,6 @@ export class TitleViewComponent implements OnInit, OnDestroy {
         filter( (currentTitle: CurrentTitle) => !n_u_empty_(currentTitle) )
       );
 
-    // Loads the current title playback from the url using the stored value. Updates a value in the store only if the current store value is empty.
-
     this._audioService.expandPlayer(true);
   }
 

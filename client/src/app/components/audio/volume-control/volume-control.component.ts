@@ -31,18 +31,18 @@ export class VolumeControlComponent {
     private _audioService: AudioService
   ) {
     this.volume$ = this._audioService.getStateProp(AudioStateProp.volume)
-    .pipe(
-      map( (val: number | boolean) => val as number ),
-      tap( (volume: number) => {
-        if(volume === 0) {
-          this.volumeIcon$.next('volume_off');
-        } else if(volume <= 0.5) {
-          this.volumeIcon$.next('volume_down');
-        } else {
-          this.volumeIcon$.next('volume_up');
-        }
-      })
-    );
+      .pipe(
+        map( (val: number | boolean) => val as number ),
+        tap( (volume: number) => {
+          if(volume === 0) {
+            this.volumeIcon$.next('volume_off');
+          } else if(volume <= 0.5) {
+            this.volumeIcon$.next('volume_down');
+          } else {
+            this.volumeIcon$.next('volume_up');
+          }
+        })
+      );
   }
 
   onSliderChange(change: MatLegacySliderChange): void {

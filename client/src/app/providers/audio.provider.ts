@@ -104,11 +104,11 @@ export class AudioProvider {
 
     // Wires the audio element to the audio commands to lauch them from the store.
     this._store.select(audioCommand)
-    .pipe(
-      filter( (cmd: AudioCommand) => cmd !== undefined ),
-      takeWhile( (cmd: AudioCommand) => cmd.name !== AudioAction.RESET ),
-      tap( (cmd: AudioCommand) => this._execCommand(cmd, audio) )
-    ).subscribe();
+      .pipe(
+        filter( (cmd: AudioCommand) => cmd !== undefined ),
+        takeWhile( (cmd: AudioCommand) => cmd.name !== AudioAction.RESET ),
+        tap( (cmd: AudioCommand) => this._execCommand(cmd, audio) )
+      ).subscribe();
 
     console.info('Audio chain initialized');
   }
@@ -132,7 +132,6 @@ export class AudioProvider {
 
       case AudioAction.PRELOAD:
         audio.src = command.payload.data?.source ? command.payload.data.source  : '';
-        audio.volume = 0.5; // Set volume to mid by default.
         audio.load();
         break;
 
@@ -140,7 +139,6 @@ export class AudioProvider {
         audio.pause();
         audio.src = command.payload.data?.source ? command.payload.data.source  : '';
         audio.load();
-        audio.volume = 0.5; // Set volume to mid by default.
         audio.play();
         break;
 

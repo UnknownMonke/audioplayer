@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ChangeDetectionStrategy, Component, ElementRef, NgModule, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { Subject, takeUntil } from "rxjs";
+import { ScrollService } from "../../services/scroll.service";
 
 /**
- * Layout component to hold css background.
+ * Standalone component to hold css background.
  *
  * ---
  *
@@ -20,7 +23,7 @@ import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
  * └────────────────────────────┘
  *
  * ng-content is used to inject templates in the child component diectly from the parent component.
- * See Angular content projection.
+ * --> See Angular content projection.
  *
  * ---
  *
@@ -39,6 +42,13 @@ import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
  *
  * To prevent importing unecessary data into the component, the even-more simple solution is to fix the container height,
  * then flex the display with a scroll on the content; the content height will automatically adjust when the player appears.
+ *
+ * The content holds the lists of playlists and titles, and as such is made scrollable.
+ * The navigation remembers the previous scroll position,
+ * and the template listens for scroll restoration after the list of elements has finished initialization.
+ * --> See the scroll store for more infos.
+ *
+ * Also, the subscription is handled within the component as the async pipe will produce some weird results upon scroll restoration.
  */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,13 +56,44 @@ import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.scss']
 })
-export class BackgroundComponent {}
+export class BackgroundComponent implements OnInit, OnDestroy {
+
+  isDead$ = new Subject<boolean>();
+
+  @ViewChild('content') content: ElementRef<HTMLDivElement>;
+
+  constructor(
+    private _element: ElementRef,
+    private _scrollService: ScrollService
+  ) {
+    this.content = this._element.nativeElement
+  }
+
+  ngOnInit(): void {
+    this._scrollService.scrollPos$
+      .pipe(
+        takeUntil(this.isDead$)
+      ).subscribe((value: number) => {
+        this.content.nativeElement.scrollTop = value;
+      });
+  }
+
+  scrollend(scrollEvent: any): void {
+    this._scrollService.savePos(scrollEvent.target.scrollTop);
+  }
+
+  ngOnDestroy(): void {
+    this.isDead$.next(true);
+  }
+}
 
 // ------------------------------------------------------------------------------------------------------------------------ //
 
 @NgModule({
   declarations: [BackgroundComponent],
   exports: [BackgroundComponent],
-  imports: []
+  imports: [
+    CommonModule
+  ]
 })
 export class BackgroundModule {}

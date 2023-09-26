@@ -1,11 +1,6 @@
 .currentTitle {
   cursor: pointer;
 
-  &.disabled {
-    pointer-events: none;
-    cursor: auto;
-  }
-
   span {
     color: var(--player-text-color);
     text-align: center;

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, Input, NgModule } from "@angular/core";
+import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { filter, Observable } from "rxjs";
 import { n_u_empty_ } from "src/app/helpers";
@@ -28,12 +28,10 @@ import { TitleService } from "../../../services/title.service";
 })
 export class SongTitleComponent {
 
-  @Input() disableClick = false;
-
   readonly currentTitle$: Observable<CurrentTitle>;
 
   constructor(
-    private _titleService: TitleService,
+    private _titleService: TitleService
   ) {
     this.currentTitle$ = this._titleService.currentTitle$
       .pipe(

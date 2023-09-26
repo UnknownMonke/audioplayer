@@ -3,9 +3,7 @@
 
 // Import themes.
 @import "../src/assets/themes/dark-dusk.css";
-@import "../src/assets/themes/light-dusk.css";
 @import "../src/assets/themes/light-green.css";
-@import "../src/assets/themes/light-sun.css";
 
 // ----------------------------------------------------------- //
 
@@ -15,7 +13,7 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Heebo, "Helvetica Neue", sans-serif;
 }
 
 span {
@@ -60,7 +58,7 @@ span {
 
   body {
     --footerHeight: 260px;
-    --playerSmall: 180px;
+    --playerSmall: 200px;
   }
 }
 

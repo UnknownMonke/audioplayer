@@ -10,13 +10,6 @@ export declare type TitleState = {
   selected: boolean
 };
 
-export declare type DisplaysState = {
-  player: boolean,
-  playerExpanded: boolean,
-  settings: boolean,
-  themes: boolean
-}
-
 /* --------------------------- DTO --------------------------- */
 
 /** DTO, may not represent the underlying Entity. */

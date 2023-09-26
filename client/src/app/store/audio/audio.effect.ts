@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, mergeMap, of, tap } from "rxjs";
+import { TitleProvider } from "../../providers/title.provider";
+import { CurrentTitle } from "../../types";
 import { DisplaysActions, displayPlayer } from "../display/display.store";
 import { streamingPlaylist, updateStreamingPlaylist } from "../playlist/playlist.store";
 import { currentTitle, setCurrentTitle } from "../title/title.store";
 import { AudioCommands, changeTitle, loadTitle, playPause, togglePlay } from "./audio.store";
-import { TitleProvider } from "src/app/providers/title.provider";
-import { CurrentTitle } from "src/app/types";
+
 
 
 @Injectable({

@@ -6,7 +6,8 @@
   transform: translate(-50%, 50%);
   width: 300px;
   background: var(--menu-bg);
-  border-radius: 4px;
+  border-radius: 8px;
+  border: var(--menu-border);
   box-shadow: var(--box-shadow);
 }
 

@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy, NgModule, OnInit, ViewChild, Elemen
 import { NavigationEnd, Router } from "@angular/router";
 import { filter, Observable, Subject, takeUntil, tap } from "rxjs";
 import { AudioService } from "../../services/audio.service";
+import { ThemeService } from "src/app/services/theme.service";
 
 /**
  * Standalone component to display the Audio Spectre.
@@ -39,8 +40,10 @@ export class AudioSpectreComponent implements OnInit, OnDestroy {
 
   constructor(
     private _router: Router,
+    private _zone: NgZone,
     private _audioService: AudioService,
-    private zone: NgZone
+    private _themeService: ThemeService
+
   ) {
     this._dataArray = new Uint8Array(this._audioService.analyser.frequencyBinCount);
     this._currentRoute = this._router.url;
@@ -68,7 +71,7 @@ export class AudioSpectreComponent implements OnInit, OnDestroy {
 
       if(ctx) {
 
-        this.zone.runOutsideAngular(() => {
+        this._zone.runOutsideAngular(() => {
           const tick = () => {
             this._audioService.analyser.getByteFrequencyData(this._dataArray); // Fills array with instant fft.
 
@@ -99,21 +102,23 @@ export class AudioSpectreComponent implements OnInit, OnDestroy {
         // Creates the bar color.
         const gradient = ctx.createLinearGradient(0, 0, 0, height);
 
-        gradient.addColorStop(1, '#ac1d92');
-        gradient.addColorStop(0.65, '#ffa5ac');
-        gradient.addColorStop(0.36, '#ffe8a8');
-        gradient.addColorStop(0.22, '#fac4f2');
-        gradient.addColorStop(0, '#ffffff');
+        switch(this._themeService.getCurrentTheme()) {
+          case 'light-green':
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            break;
 
-        /*gradient.addColorStop(1, '#290040');
-        gradient.addColorStop(0.65, '#ffa5ac');
-        gradient.addColorStop(0.22, '#fac4f2');
-        gradient.addColorStop(0, '#ffffff');*/
+          case 'dark-dusk':
+            gradient.addColorStop(1, '#3c0b81');
+            gradient.addColorStop(0.32, '#8115a8');
+            gradient.addColorStop(1, '#a820b0');
+            break;
 
-
-        /*gradient.addColorStop(1, '#ffda51');
-        gradient.addColorStop(0.64, '#9e24a3');
-        gradient.addColorStop(0, '#290040');*/
+          default:
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            break;
+        }
 
         ctx.fillStyle = gradient;
 
@@ -142,7 +147,9 @@ export class AudioSpectreComponent implements OnInit, OnDestroy {
 
           ctx.fillRect(width / 2 - x, height, barWidth, -barHeight);
 
-          ctx.fillRect(width / 2 + x, height, barWidth, -barHeight);
+          if(i <= this._bars - 1) {
+            ctx.fillRect(width / 2 + x + (barWidth + 1), height, barWidth, -barHeight);
+          }
 
           x += barWidth + 1;
         }
@@ -183,9 +190,9 @@ export class AudioSpectreComponent implements OnInit, OnDestroy {
 
       } else {
         if(window.innerWidth > 600) {
-          this._height = 120;
+          this._height = 116;
         } else {
-          this._height = 180;
+          this._height = 174;
         }
       }
 

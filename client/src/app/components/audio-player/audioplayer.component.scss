@@ -1,4 +1,3 @@
-.bg {
-  background: var(--player-bg);
-  box-shadow: var(--box-shadow);
+:host {
+  display: block;
 }

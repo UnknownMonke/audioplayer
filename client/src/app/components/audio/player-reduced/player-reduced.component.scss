@@ -1,8 +1,20 @@
-.player {
-  position: relative; // Displays player above spectre.
-  z-index: 20;
+// Allows for gradient border.
+.wrapper {
+  background: var(--player-reduced-border-bg);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   width: 100%; // Centers.
-  height: var(--playerSmall);
+  min-height: var(--playerSmall);
+
+  .player {
+    flex-grow: 1;
+    margin-top: 4px;
+    background: var(--player-reduced-bg);
+
+    .title-container, .controls {
+      z-index: 20;
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -20,7 +32,7 @@
 
     .controls {
       gap: 6vw;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
   }
 }

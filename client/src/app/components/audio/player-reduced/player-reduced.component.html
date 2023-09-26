@@ -1,13 +1,19 @@
-<div class="player">
+<div class="wrapper cflex j-center">
 
-  <div class="title-container">
-    <m-song-title [disableClick]="false"></m-song-title>
-  </div>
+  <div class="player">
 
-  <div class="controls flex a-center">
+    <div class="title-container">
+      <m-song-title></m-song-title>
+    </div>
 
-    <m-prevnext-control [direction]="-1"></m-prevnext-control>
-    <m-play-control></m-play-control>
-    <m-prevnext-control [direction]="1"></m-prevnext-control>
+    <div class="controls flex a-center">
+
+      <m-prevnext-control [direction]="-1"></m-prevnext-control>
+      <m-play-control></m-play-control>
+      <m-prevnext-control [direction]="1"></m-prevnext-control>
+
+    </div>
+
+    <m-audiospectre></m-audiospectre>
   </div>
 </div>

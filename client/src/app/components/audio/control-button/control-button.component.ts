@@ -29,7 +29,8 @@ export class ControlButtonComponent {
 
   @Input() icon = '';
   @Input() size = '';
-  @Input() active?: boolean; // Whether or not the button is actived.
+  @Input() theme = '';
+  @Input() activated?: boolean; // Whether or not the button is actived.
 
   @Output() onClick = new EventEmitter();
 }

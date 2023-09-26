@@ -16,14 +16,18 @@ import { PlaylistEffects } from './store/playlist/playlist.effect';
 import { currentPlaylistReducer, streamingPlaylistReducer, playlistsReducer } from './store/playlist/playlist.store';
 import { TitleEffects } from './store/title/title.effects';
 import { currentTitleReducer } from './store/title/title.store';
+import { scrollMapReducer, scrollPosReducer } from './store/scroll/scroll.store';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+import { ScrollEffects } from './store/scroll/scroll.effects';
+import { routeHistoryReducer } from './store/router/router.store';
+import { RouterEffects } from './store/router/router.effects';
 
 //TODO use meta reducers to debug tools
 //TODO testing, labels on buttons, random
 //TODO tri playlists
 //TODO sliding text title song
 //TODO private mode css ?
-//TODO persistent volume change across the session
-//TODO keep track of scroll pos while going back
+//TODO mute volume on click
 //TODO material icons & fonts offline
 /**
  * Root component of the application.
@@ -105,6 +109,8 @@ export class AppComponent {}
       AudioEffects,
       DisplayEffects,
       PlaylistEffects,
+      ScrollEffects,
+      RouterEffects,
       TitleEffects
     ]),
     // Injects the store and assign corresponding reducers to each of their state variable.
@@ -116,9 +122,15 @@ export class AppComponent {}
         currentPlaylist: currentPlaylistReducer,
         streamingPlaylist: streamingPlaylistReducer,
         currentTitle: currentTitleReducer,
-        playlists: playlistsReducer
+        playlists: playlistsReducer,
+        scrollMap: scrollMapReducer,
+        scrollPos: scrollPosReducer,
+        routeHistory: routeHistoryReducer,
+        router: routerReducer
       }
     ),
+    // Connects RouterModule with StoreModule, uses MinimalRouterStateSerializer by default
+    StoreRouterConnectingModule.forRoot(),
     AudioPlayerModule,
     BackgroundModule
   ],

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
 import { Observable } from "rxjs";
-import { Theme, ThemeService } from "../../services/theme.service";
+import { Theme, themeList, ThemeService } from "../../services/theme.service";
 import { ModalModule } from "../modal/modal.component";
 import { ThemeModule } from "../theme/theme.component";
 
@@ -51,11 +51,3 @@ export class ThemeMenuComponent {
   ]
 })
 export class ThemeMenuModule {}
-
-/** Static theme list, exported as a separate object in order to be used throughout the application. */
-export const themeList: Theme[] = [
-  { id: "light-sun", name: "Light Sun" },
-  { id: "light-dusk", name: "Light Dusk" },
-  { id: "light-green", name: "Light Green" },
-  { id: "dark-dusk", name: "Dark Dusk" }
-];

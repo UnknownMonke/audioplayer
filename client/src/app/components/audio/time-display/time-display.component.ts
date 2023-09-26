@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, Input, NgModule, OnInit } from "@angular/core";
 import { EMPTY, map, Observable, of } from "rxjs";
-import { TimePipe } from "src/app/pipes/time.pipe";
+import { TimePipe } from "../../../pipes/time.pipe";
 import { AudioService, AudioStateProp } from "../../../services/audio.service";
 
 /**
@@ -40,14 +40,14 @@ export class TimeDisplayComponent implements OnInit {
 
     switch(this.stampType) {
 
-      case TimeDisplayStamp.currentTime:
+      case 'currentTime':
         this.time$ = this._audioService.getStateProp(AudioStateProp.currentTime)
           .pipe(
             map( (val: number | boolean) => val as number ) // Contextual cast.
           );
         break;
 
-      case TimeDisplayStamp.totalTime:
+      case 'totalTime':
         this.time$ = this._audioService.getStateProp(AudioStateProp.duration)
           .pipe(
             map( (val: number | boolean) => val as number )
@@ -71,15 +71,3 @@ export class TimeDisplayComponent implements OnInit {
   ]
 })
 export class TimeDisplayModule {}
-
-/**
- * Local enum for Time Display component.
- * Defines the nature of the timestamp.
- *
- * Only used in the component and components that instantiates it,
- * therefore we can define it inside the component itself and export it.
- */
-export enum TimeDisplayStamp {
-  currentTime = 'currentTime',
-  totalTime = 'totalTime'
-};

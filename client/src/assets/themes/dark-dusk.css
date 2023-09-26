@@ -1,32 +1,49 @@
 html[data-theme="dark-dusk"] {
   --box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px, rgba(0, 0, 0, 0.12) 0px 1px 18px;
 
-  --default-text-color: #ffffff;
+  --page-bg: #130024;
 
-  --scrollbar-color: #ffffff;
-  --scrollbar-bg: #000000;
+  /* Text. */
+  --default-text-color: #e3e1e6;
+  --darker-text: #e3e1e6;
 
-  --page-bg: linear-gradient(180deg, rgba(14,4,19,1) 0%, rgba(44,0,79,1) 58%, rgba(44,0,110,1) 77%, rgba(84,0,54,1) 100%);
+  /* Scrollbar. */
+  --scrollbar-color: #e3e1e6;
+  --scrollbar-bg: transparent;
 
-  --menu-bg: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,54,1) 100%);
+  /* Settings menus. */
+  --menu-bg: #130024;
   --menu-hover: rgba(232,232,232,0.4);
-  --menu-hr: #a7a7a7;
+  --menu-hr: #24292e;
+  --menu-border: 2px solid #24292e;
 
-  --home-btn-border: #d8caff;
-  --home-btn-bg: linear-gradient(45deg, rgba(149,44,42,1) 0%, rgba(109,27,112,1) 64%, rgba(65,14,88,1) 100%);
+  /* Home button. */
+  --home-btn-border: #bfbdbf;
+  --home-btn-bg: linear-gradient(45deg, rgba(166,39,105,1) 0%, rgba(83,6,85,1) 43%, rgba(37,1,54,1) 100%);
+  --home-btn-box-shadow: 0 0 .2rem #ffffff, 0 0 .2rem #ffffff, 0 0 2rem #bc13fe, 0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 
-  --card-bg: #011627;
-  --card-bg-active: linear-gradient(270deg, rgba(3,33,77,1) 0%, rgba(72,1,99,1) 25%, rgba(3,33,77,1) 60%);
-  --card-border: #222747;
-  --card-subtitle: white;
+  /* List cards. */
+  --card-bg: rgba(107,126,150,0.4);
+  --card-bg-active: linear-gradient(90deg, rgba(251,106,138,1) 0%, rgba(167,17,171,1) 43%, rgba(101,6,145,1) 100%);
+  --card-subtitle: #e3e1e6;
 
+  /* Loader. */
   --loader-bg: #12E2DC;
 
+  /* Playing anim. */
+  --anim-card-box-shadow: rgba(255,255,255,0.08) 0px 0px 40px 5px inset;
+  --anim-card-bg: #18002e;
   --playing-anim-bg: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(168,0,111,1) 100%);
 
-  --player-bg: linear-gradient(0deg, rgba(48,48,48,1) 0%, rgba(41,0,64,1) 16%, rgba(49,0,69,1) 45%, rgba(69,5,94,1) 68%, rgba(103,11,128,1) 100%);
-  --player-text-color: #ffffff;
+  /* Audioplayer. */
+  --player-expanded-bg: linear-gradient(45deg, rgba(73,45,168,1) 0%, rgba(78,6,122,1) 32%, rgba(116,7,122,1) 64%, rgba(94,8,140,1) 100%);
+  --player-expanded-slider-fill: linear-gradient(45deg, rgba(92,4,180,1) 0%, rgba(130,4,129,1) 52%, rgba(245,159,180,1) 100%);
+  --player-reduced-border-bg: linear-gradient(45deg, rgba(58,5,119,1) 0%, rgba(89,20,154,1) 32%, rgba(116,7,122,1) 64%, rgba(94,8,140,1) 100%);
+  --player-reduced-bg: #13071d;
+  --player-text-color: #e3e1e6;
 
-  --player-btn-bg: rgba(255,255,255,0.18);
-  --player-btn-bg-active: rgba(255, 255, 255, 0.45);
+  /* Control buttons. */
+  --player-btn-bg: rgba(202,193,209,0.18);
+  --player-btn-bg-active: rgba(202,193,209,0.58);
+  --play-btn-bg: linear-gradient(45deg, rgba(241,194,244,1) 0%, rgba(237,34,242,1) 56%, rgba(190,56,252,1) 100%);
 }

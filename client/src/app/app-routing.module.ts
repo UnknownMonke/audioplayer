@@ -8,7 +8,7 @@ import { TitleViewComponent } from './components/titleview/titleview.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'playlists',

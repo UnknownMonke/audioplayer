@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { Observable } from "rxjs";
 import { AudioService } from "../../services/audio.service";
-import { AudioSpectreModule } from "../audio-spectre/audiospectre.component";
 import { PlayerExpandedModule } from "../audio/player-expanded/player-expanded.component";
 import { PlayerReducedModule } from "../audio/player-reduced/player-reduced.component";
 
@@ -15,7 +14,6 @@ import { PlayerReducedModule } from "../audio/player-reduced/player-reduced.comp
  * Actions :
  *
  * - Loads the expanded or reduced layouts according to view.
- * - Holds the audio spectre component within the player background.
  *
  * Only one instance of the component exists throughout the application, to allow the user to navigate without losing the current audio stream,
  * as all subscriptions are removed on destroy.
@@ -49,7 +47,6 @@ export class AudioPlayerComponent {
   imports: [
     CommonModule,
     RouterModule,
-    AudioSpectreModule,
     PlayerExpandedModule,
     PlayerReducedModule
   ]

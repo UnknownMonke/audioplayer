@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, NgModule } from "@angular/core";
-import { LoopControlModule } from "../loop-control/loop-control.component";
 import { PlayControlModule } from "../play-control/play-control.component";
 import { PrevNextControlModule } from "../prevnext-control/prevnext-control.component";
 import { SongTitleModule } from "../song-title/song-title.component";
-import { TimeDisplayModule } from "../time-display/time-display.component";
-import { TimeSliderModule } from "../time-slider/time-slider.component";
-import { VolumeControlModule } from "../volume-control/volume-control.component";
+import { AudioSpectreModule } from "../../audio-spectre/audiospectre.component";
 
 /**
  * Standalone layout component for the audio player in reduced mode.
  *
  * ---
  *
- * Handles layout and positioning of elements.
+ * Actions :
+ *
+ * - Handles layout and positioning of elements.
+ * - Holds the audio spectre component within the player background.
  *
  * All audio elements are components of their own.
  */
@@ -30,13 +30,10 @@ export class PlayerReducedComponent {}
   declarations: [PlayerReducedComponent],
   exports: [PlayerReducedComponent],
   imports: [
-    LoopControlModule,
+    AudioSpectreModule,
     PlayControlModule,
     PrevNextControlModule,
-    SongTitleModule,
-    TimeDisplayModule,
-    TimeSliderModule,
-    VolumeControlModule
+    SongTitleModule
   ]
 })
 export class PlayerReducedModule {}

@@ -44,7 +44,3 @@ export const currentTitleReducer = createReducer(
  * The variable can also be accessed directly with the variable name, such as `store.select('myVariable')`.
  */
 export const currentTitle = createFeatureSelector<CurrentTitle>('currentTitle');
-
-/*export const currentTitleActive = createSelector(
-  currentTitle,
-  (state: CurrentTitle) => !n_u_empty_(state))*/

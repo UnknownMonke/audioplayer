@@ -1,11 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, NgModule } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, NgModule } from "@angular/core";
+import { ScrollService } from "src/app/services/scroll.service";
 
 /**
  * Layout component to encapsulate a list of items under a list-type structure.
  *
  * ---
  *
- * Provides the css structure and a title.
+ * Actions :
+ *
+ * - Provides the css structure and a title.
+ * - Send a dispatch once the component has finished loading, to apply the stored scroll position to the scrollable background element.
+ *
+ * ---
  *
  * Height is modified when the audio player is visible to see all elements (automatically from the background flexbox).
  *
@@ -27,9 +33,17 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from "@angular/co
   templateUrl: './listview.component.html',
   styleUrls: ['./listview.component.scss']
 })
-export class ListViewComponent {
+export class ListViewComponent implements AfterViewInit {
 
   @Input() listTitle = ''; // Obvious types do not need to be declared.
+
+  constructor(
+    private _scrollService: ScrollService
+  ) {}
+
+  ngAfterViewInit(): void {
+    this._scrollService.applyScroll(); // Once loaded, triggers scroll restoration.
+  }
 }
 
 // ------------------------------------------------------------------------------------------------------------------------ //

@@ -1,5 +1,5 @@
 import { createAction, createActionGroup, createFeatureSelector, createReducer, createSelector, on, props } from "@ngrx/store";
-import { DisplaysState } from "src/app/types";
+import { DisplaysState } from "./display.types";
 
 export const toggleMenuSettings = createAction(
   '[boolean] Toggle Settings Menu'

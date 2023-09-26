@@ -1,6 +1,6 @@
 <div class="container cflex">
 
-  <div class="content">
+  <div #content class="content" (scrollend)="scrollend($event)">
     <ng-content select="[content]"></ng-content>
   </div>
 

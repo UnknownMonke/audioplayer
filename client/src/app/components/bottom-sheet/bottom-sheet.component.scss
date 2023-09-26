@@ -9,6 +9,7 @@
   width: 300px;
   background: var(--menu-bg);
   box-shadow: var(--box-shadow);
-  border-radius: 4px;
+  border-radius: 8px;
+  border: var(--menu-border);
   box-sizing: border-box; // Makes padding as part of the element width.
 }

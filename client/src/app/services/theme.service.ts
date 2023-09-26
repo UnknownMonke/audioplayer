@@ -12,7 +12,7 @@ import { DisplaysActions, displayThemes } from "../store/display/display.store";
  * Actions :
  *
  * - Handles the display of the themes selection dialog by interfacing the store attribute with an Observable.
- * - Sets the selected theme.
+ * - Get & Sets the selected theme.
  *
  * The theme is set by injecting the data-attribute directly into the html tag,
  * which will automatically pull the corresponding css.
@@ -45,6 +45,10 @@ export class ThemeService {
     localStorage.setItem('theme', theme);
   }
 
+  getCurrentTheme(): string {
+    return this._document.documentElement.getAttribute('data-theme') || 'default';
+  }
+
   showThemesMenu(display: boolean): void {
     this._store.dispatch(DisplaysActions.setThemes({ display }));
   }
@@ -63,3 +67,9 @@ export declare type Theme = {
   id: string,
   name: string
 } | Record<PropertyKey, never>;
+
+/** Static theme list, exported as a separate object in order to be used throughout the application. */
+export const themeList: Theme[] = [
+  { id: "light-green", name: "Light Green" },
+  { id: "dark-dusk", name: "Dark Dusk" }
+];
